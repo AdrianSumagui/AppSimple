@@ -19,7 +19,7 @@ app.get('/api', (req, res) => {
     const data = {
 
         todo: 'Jugar a Valorant',
-        todoDescription: 'Jugar con los panas'
+        todoDescription: 'Jugar con los panitas'
 
     };
 
