@@ -1,7 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
-module.exports = router;
+// Importo el modelo.
+
+const Todo = require('../models/Todo.js')
 
 // Rutas
 
@@ -23,3 +25,6 @@ router.get('/api', (req, res) => {
         });
 
 });
+
+
+module.exports = router;

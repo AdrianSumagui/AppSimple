@@ -8,6 +8,8 @@ const path = require('path');
 const app = express();
 const PORT = process.env.PORT || 8080;
 
+const routes = require('./routes/api.js');
+
 mongoose.connect('mongodb://localhost/AppSimple', {
 
     useNewUrlParser: true,
@@ -24,38 +26,10 @@ mongoose.connection.on('connected', () => {
 });
 
 
-
-// Guardar datos a la base de datos.
-
-const data = {
-
-    todoTitle: 'Tarde de Valos',
-    todoDescription: 'Jugar con los Panas al Valorant'
-
-};
-
-// Instanciar el modelo. 
-
-const newTodo = new Todo(data);
-
-newTodo.save((error) => {
-
-    if (error) {
-
-        console.log('Ha ocurrido un error. :(')
-
-    } else {
-
-        console.log('Los datos se han guardado correctamente. :D')
-
-    }
-
-});
-
-
 // HTTP request logger.
 
 app.use(morgan('tiny'));
+app.use('/', routes);
 
 
 
