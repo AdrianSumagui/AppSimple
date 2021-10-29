@@ -23,19 +23,7 @@ mongoose.connection.on('connected', () => {
 
 });
 
-// Schema
 
-const Schema = mongoose.Schema;
-const todoSchema = new Schema({
-
-    todoTitle: String,
-    todoDescription: String
-
-});
-
-// Modelo
-
-const Todo = mongoose.model('Todo', todoSchema);
 
 // Guardar datos a la base de datos.
 
@@ -64,27 +52,12 @@ newTodo.save((error) => {
 
 });
 
-// .save();
 
 // HTTP request logger.
 
 app.use(morgan('tiny'));
 
-// Rutas
 
-app.get('/api', (req, res) => {
-
-    const data = {
-
-        todoTitle: 'Jugar a Valorant',
-        todoDescription: 'Jugar con los panitas'
-
-    };
-
-    res.json(data);
-
-
-}) ;
 
 app.listen(PORT, console.log(`Servidor desplegado en el puerto ${PORT}`));
 
