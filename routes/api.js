@@ -7,7 +7,7 @@ const Todo = require('../models/Todo.js')
 
 // Rutas
 
-router.get('/api', (req, res) => {
+router.get('/', (req, res) => {
 
     Todo.find({ })
 

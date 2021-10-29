@@ -29,7 +29,7 @@ mongoose.connection.on('connected', () => {
 // HTTP request logger.
 
 app.use(morgan('tiny'));
-app.use('/', routes);
+app.use('/api', routes);
 
 
 
