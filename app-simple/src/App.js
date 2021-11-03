@@ -1,6 +1,51 @@
 import React from 'react';
+import axios from 'axios';
 
 class App extends React.Component {
+
+  state = {
+
+    todoTitle: '',
+    todoDescription: ''
+
+  };
+
+  handleChange = (event) => {
+
+    const target = event.target;
+    const name = target.name;
+    const value = target.value;
+
+    this.setState({
+
+      [name]: value
+
+    });
+
+  };
+
+  submit = (event) => {
+
+    event.preventDefault();
+
+    const payload = {
+
+      todoTitle: this.state.todoTitle,
+      todoDescription: this.state.todoDescription
+
+    };
+
+    axios({
+
+      url:'',
+      method: 'POST',
+      data: payload
+
+    })
+
+  };
+
+
 
   render() {
 
@@ -32,7 +77,7 @@ class App extends React.Component {
         
         <div className="form-input">
 
-          <input type="text" name="todoTitle" placeholder="Título" value="" onChange={this.updateChange}/>
+          <input type="text" name="todoTitle" placeholder="Título" value={this.state.todoTitle} onChange={this.handleChange}/>
 
         </div>
 
@@ -40,19 +85,19 @@ class App extends React.Component {
 
         <div className="form-input">
 
-          <input type="text" name="todoDescription" placeholder="Descripción" value="" onChange={this.updateChange}/>
+          <input type="text" name="todoDescription" placeholder="Descripción" value={this.state.todoDescription} onChange={this.handleChange}/>
 
         </div>
 
         <br/>
 
-        <button>REGISTRARSE</button>
+        <button>AÑADIR TAREA</button>
 
       </form>
 
       <br/>
 
-      <h2>Lista de participantes</h2>
+      <h2>Lista de tareas pendientes</h2>
 
       <br/>
 
