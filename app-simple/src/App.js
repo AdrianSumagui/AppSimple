@@ -1,25 +1,75 @@
-import logo from './logo.svg';
-import './App.css';
+import React from 'react';
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+class App extends React.Component {
+
+  render() {
+
+    console.log('State: ', this.state);
+
+    return(
+
+      <React.Fragment>
+
+      <header className="titular">
+
+        <h1>Todo App</h1>
+
       </header>
-    </div>
-  );
-}
+
+      <div>
+
+        <h2>Mantén tus tareas organizadas añadiéndolas a esta lista. :D</h2>
+
+      <article>
+
+       <p>Recuerda que tienes la opción de editar o eliminar tareas.</p>
+
+      </article>
+
+      <br/>
+
+      <form onSubmit={this.submit}>
+        
+        <div className="form-input">
+
+          <input type="text" name="todoTitle" placeholder="Título" value="" onChange={this.updateChange}/>
+
+        </div>
+
+        <br/>
+
+        <div className="form-input">
+
+          <input type="text" name="todoDescription" placeholder="Descripción" value="" onChange={this.updateChange}/>
+
+        </div>
+
+        <br/>
+
+        <button>REGISTRARSE</button>
+
+      </form>
+
+      <br/>
+
+      <h2>Lista de participantes</h2>
+
+      <br/>
+
+      <div className="listado">
+
+
+
+      </div>
+
+      </div>
+
+      </React.Fragment>
+
+      );
+
+    }
+
+};
 
 export default App;
