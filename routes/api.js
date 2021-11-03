@@ -26,5 +26,16 @@ router.get('/', (req, res) => {
 
 });
 
+router.post('/save', (req, res) => {
+
+    console.log('Body: ', req.body);
+
+        res.json({
+            msg: 'Se han recibido los datos con éxito. :D'
+        });
+        
+});
+
+
 
 module.exports = router;
