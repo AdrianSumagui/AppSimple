@@ -43,6 +43,18 @@ class App extends React.Component {
 
     })
 
+    .then(() => {
+
+      console.log('Los datos se han enviado al servidor. :D');
+
+    })
+    
+    .catch(() => {
+
+      console.log('Los datos no se han enviado al servidor. D:');
+
+    })
+
   };
 
 
