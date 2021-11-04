@@ -30,9 +30,24 @@ router.post('/save', (req, res) => {
 
     console.log('Body: ', req.body);
 
-        res.json({
+    const data = req.body;
+
+    const newTodo = new Todo(data);
+
+    newTodo.save((error) => {
+
+        if (error) {
+
+            res.status(500).json({msg: 'Ha ocurrido un error. D:'})
+            return;
+
+        }
+
+        return res.json({
             msg: 'Se han recibido los datos con éxito. :D'
         });
+
+    });
         
 });
 

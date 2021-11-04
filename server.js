@@ -25,6 +25,10 @@ mongoose.connection.on('connected', () => {
 
 });
 
+// Parseo el json.
+app.use(express.json());
+app.use(express.urlencoded({extended: false}));
+
 
 // HTTP request logger.
 
