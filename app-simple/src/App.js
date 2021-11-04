@@ -46,6 +46,7 @@ class App extends React.Component {
     .then(() => {
 
       console.log('Los datos se han enviado al servidor. :D');
+      this.resetInput();
 
     })
     
@@ -56,6 +57,19 @@ class App extends React.Component {
     })
 
   };
+
+// Reseteo los inputs para que el usuario pueda añadir más.
+
+  resetInput = () => { 
+
+    this.setState({
+
+      todoTitle: '',
+      todoDescription: ''
+
+    });
+
+};
 
 
 
