@@ -6,7 +6,38 @@ class App extends React.Component {
   state = {
 
     todoTitle: '',
-    todoDescription: ''
+    todoDescription: '',
+    todos: []
+
+  };
+
+  // Recoger los datos desde la base de datos.
+
+  componentDidMount = () => { // Llamo a la función getData() cuando el componente haya cargado. -> componentDidMount()
+
+    this.getData();
+
+  };
+
+  // Recibe los datos de la base de datos.
+
+  getData = () => {
+
+    axios.get('/api')
+
+      .then((response) => {
+
+        const data = response.data;
+        this.setState({todos: data})
+        console.log('Los datos han sido recibidos correctamente. :D');
+
+      })
+
+      .catch(() => {
+
+        alert('Error. Los datos no se han recibido. D:');
+
+      });
 
   };
 
@@ -47,6 +78,7 @@ class App extends React.Component {
 
       console.log('Los datos se han enviado al servidor. :D');
       this.resetInput();
+      this.getData();
 
     })
     
@@ -69,8 +101,22 @@ class App extends React.Component {
 
     });
 
-};
+  };
 
+  // Mostrar los datos recibidos desde la base de datos.
+
+  showData = (todos) => {
+
+    if (!todos.length) return null;
+
+      return todos.map((todoss, index) => (
+      <div key={index}>
+        <h3>{todoss.todoTitle}</h3>
+        <p>{todoss.todoDescription}</p>
+      </div>
+
+    ));
+  }
 
 
   render() {
@@ -121,17 +167,21 @@ class App extends React.Component {
 
       </form>
 
+
+
       <br/>
 
       <h2>Lista de tareas pendientes</h2>
 
       <br/>
 
-      <div className="listado">
 
+      <div className = "listado">
 
+        {this.showData(this.state.todos)}
 
       </div>
+
 
       </div>
 
